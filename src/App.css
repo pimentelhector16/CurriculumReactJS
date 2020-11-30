@@ -1,0 +1,254 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* PALETA DE COLORES */
+:root {
+  --main-primario: #364f6b;
+  --main-secundario: #3fc1c9;
+  --main-bg: #ffffff;
+  --main-cuaternario: #2b9bbd;
+  --main-quinario: #dddddd;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to right bottom, var(--main-cuaternario), var(--main-secundario));
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background: #364f6b;
+  background: -webkit-linear-gradient(to right, #364f6b, #232526);
+  background: linear-gradient(to right, #364f6b, #232526);
+  background-attachment: fixed;
+  height: 100vh;
+  color: var(--main-primario);
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-cuaternario);
+}
+
+a:hover {
+  text-decoration: none;
+  color: var(--main-secundario);
+}
+
+.container {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.app__sidebar {
+  background-color: var(--main-bg);
+  height: 100%;
+  border-radius: 20px;
+  padding: 25px 15px;
+  box-shadow: 0 0 10px black;
+  text-align: center;
+}
+
+.app__main-content {
+  background-color: var(--main-bg);
+  height: 100%;
+  border-radius: 20px;
+  padding: 25px 15px;
+  box-shadow: 0 0 10px black;
+}
+
+.sidebar__avatar {
+  background-color: var(--main-primario);
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.sidebar__title {
+  background-color: #f1f1f1;
+  border-radius: 30px;
+}
+
+.sidebar__icon {
+  width: 25px;
+  height: 25px;
+}
+
+.sidebar__name {
+  font-family: "Kaushan Script";
+  margin: 20px 0;
+  font-size: 1.7rem;
+  color: var(--main-primario);
+}
+
+.sidebar__name > span {
+  color: var(--main-cuaternario);
+}
+
+.sidebar__item {
+  margin-bottom: 6px;
+  padding-top: 6px;
+  height: 40px;
+  font-size: 1rem;
+  border-radius: 30px;
+}
+
+.sidebar__title {
+  background-color: #f1f1f1;
+  border-radius: 30px;
+}
+
+.sidebar__contact {
+  background-color: var(--main-quinario);
+  padding: 2px 0;
+  margin: 20px -15px;
+}
+.sidebar__icon {
+  width: 25px;
+  height: 25px;
+  margin: 0px 5px;
+}
+
+.sidebar__email {
+  background-image: linear-gradient(to right bottom, var(--main-secundario), var(--main-cuaternario));
+  border-radius: 30px;
+  color: var(--main-bg);
+  margin: 15px 25px 0px;
+  cursor: pointer;
+  transition: all 3s linear;
+}
+
+.sidebar__email:hover {
+  transform: scale(1.1);
+}
+
+.sidebar__github:hover,
+.sidebar__resume:hover {
+  background-color: var(--main-cuaternario);
+  color: var(--main-primario);
+}
+
+@media (max-width: 991px) {
+  .app__main-content {
+    margin: 30px 0;
+  }
+}
+
+
+
+
+
+/* navbar */
+
+.navbar__items {
+  display: flex;
+}
+
+.navbar__active {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--main-primario);
+  border-bottom: 4px solid var(--main-cuaternario);
+}
+
+.navbar__item {
+  margin-right: 20px;
+  text-decoration: none;
+  color: var(--main-primario);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.navbar__item:hover {
+  background: var(--main-cuaternario);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* CONTENIDO DE LA PAGINA */
+
+.content_section {
+  padding: 20px 0;
+  border-radius: 20px ;
+}
+
+.description {
+  margin-bottom: 20px;
+  padding: 20px;
+  text-align: justify;
+}
+
+.data_section {
+  background-color: var(--main-quinario);
+  padding-top: 20px;
+  margin: 0 -15px;
+}
+
+.sub_heading {
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--main-primario);
+}
+
+.card_section {
+  display: flex;
+}
+
+.card_custom {
+  background-color: var(--main-bg);
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.card_body {
+  margin-left: 15px;
+}
+
+
+.card_title {
+  color: var(--main-cuaternario);
+}
+
+.card_content {
+  color: var(--main-primario);
+  font-size: 15px;
+}
+
+.icon_small {
+  width: 30px;
+  height: 30px;
+}
+
+.icon_large {
+  width: 60px;
+  min-height: 50px;
+  height: auto;
+}
+
+.icon_tiny {
+  width: 15px;
+  height: 15px;
+}
