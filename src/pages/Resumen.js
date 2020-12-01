@@ -1,15 +1,34 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import Card from '../components/Card'
-import html from '../components/assets/html.svg'
-import css from '../components/assets/css.svg'
-import js from '../components/assets/js.svg'
-import php from '../components/assets/php.svg'
-import sql from '../components/assets/sql.png'
-import android from '../components/assets/android.png'
-import reactLogo from '../components/assets/reactlogo.png'
 
-function Resumen() {
+import { skill_language_store, skill_tool_store } from '../components/SkillStore'
+
+const SkillWrapper = ({ key, name, level, icon }) => {
+    var className = 'skill'
+
+    if (level === 'malo')
+        className = `${className} skill_malo`
+    if (level === 'medio')
+        className = `${className} skill_medio`
+    else if (level === 'bueno')
+        className = `${className} skill_bueno`
+    else if (level === 'excelente')
+        className = `${className} skill_excelente`
+    if (!icon) {
+        icon = ''
+    }
+
+    return (
+        <div key={key} className="skill_wrapper">
+            <div className={className}>
+                <span className="skill_name"><img src={icon} alt="Logo" className='icon_tiny mr-2' />   {name}</span>
+                <span className='skill_level'></span>
+            </div>
+        </div>
+    )
+}
+
+const Resumen = () => {
     const resumenVariantes = {
         initial: {
             opacity: 0
@@ -27,48 +46,63 @@ function Resumen() {
             }
         }
     }
-
     return (
-        <motion.div className='content_section'
+        <motion.div className='container resume_section'
             variants={resumenVariantes}
             initial='initial'
             animate='visible'
             exit='exit'
-
         >
-            <div className='description'>
-                Hola, Soy Desarrollador de aplicaciones y páginas web, he 
-                desarrollado y colaborado con la industria tech desde hace 
-                más de 2 años. Lo que más me gusta de la programación es dar 
-                soluciones efectivas a problemas que aparentemente son complicados.
-            </div>
-            <div className="data_section">
-                <div className="container">
-                    <p className='sub_heading'>
-                        What I offer
+            <div className="row">
+                <div className="col-12 col-lg-6 resume_card">
+                    <div className="resume_card_body">
+                        <div className='resume_card_title'><h5>Técnico Superior Universitario en Informática</h5></div>
+                        <div className='resume_card_year'>Instituto Universitario de Tecnología “Antonio José de Sucre”(2008-2011)</div>
+                        <p className='resume_card_description'>
+                            Realice mi proyecto final haciendo un sistema de gestión de pasantías 
+                            para el instituto en cuestión, Permitía llevar un control de horarios, 
+                            calificaciones, observaciones y generar reportes en pdf de los procesos activos.
+                            <p>Valoración del proyecto : <strong>20 Puntos - Mención Publicación</strong> </p>
                         </p>
-                    <div className="row">
-                        <div className="col-sm-12 col-lg-6">
-                            <Card icon={html} title="HTML5" body={["Excelentes conocimientos en el uso de esta Tecnología  -  ", <strong>90%</strong>]} />
-                        </div>
-                        <div className="col-sm-12 col-lg-6">
-                            <Card icon={css} title="CSS3" body={["Buenos conocimientos en el uso de esta Tecnología  -  ", <strong>90%</strong>," Bootstrap-Bulma-Stylus-Sass "]} />
-                        </div>
-                        <div className="col-sm-12 col-lg-6">
-                            <Card icon={php} title="PHP" body={["Buenos conocimientos en el uso de esta Tecnología  -  ", <strong>85%</strong>," PDO - Class - Hexagonal Architecture"]} />
-                        </div>
-                        <div className="col-sm-12 col-lg-6">
-                            <Card icon={js} title="Javascript" body={["Dominio del Lenguaje y en constante aprendizaje ", <strong>80%</strong>]} />
-                        </div>
-                        <div className="col-sm-12 col-lg-6">
-                            <Card icon={sql} title="SQL" body={["Buenas manejo en el uso bases de datos SQL y NoSQL ", <strong>80%</strong>, ", así como la comunicación de data en formatos de archivos JSON ", <strong>85%</strong>]} />
-                        </div>
-                        <div className="col-sm-12 col-lg-6">
-                            <Card icon={android} title="Java Android SDK" body={["Conocimientos a nivel Medio de programación para dispositivos Android ", <strong>65%</strong>," Notificaciones Push, WebServices, Navigation Drawer"]} />
-                        </div>
-                        <div className="col-sm-12 col-lg-6">
-                            <Card icon={reactLogo} title="React JS" body={["En proceso de aprendizaje para usar la libreria con un buen nivel ", <strong>60%</strong>]} />
-                        </div>
+                        <p className='resume_card_description'>
+                            Mis pasantías fueron en la Unidad Administradora Desconcentrada de la Universidad de los Andes, desarrollando un sistema de 
+                            licitaciones el cual realizaba todo tipo de funciones necesarias para realizar los cálculos necesarios para las competencias
+                            entre las empresas que ofertaban sus productos a la Universidad.
+                            <p>Valoración del proyecto : <strong>20 Puntos - Mención Honorífica</strong> </p>
+                        </p>
+                    </div>
+                </div>
+                <div className="col-12 col-lg-6 resume_card">
+                    <div className="resume_card_body">
+                        <div className='resume_card_title'><h5>Bachiller en Ciencias</h5></div>
+                        <div className='resume_card_year'>Liceo Bolivariano “Dr. Miguel Otero Silva”(2003-2008)</div>
+                        <br /> 
+                        <div className='resume_card_title'><h5>Educación Básica</h5></div>
+                        <div className='resume_card_year'>Unidad Educativa Escuela Bolivariana "La Mucuy Baja"</div>
+                        <p className='resume_card_description'>
+                        Dato: Mis trabajos de Labor Social durante mis estudios universitarios fueron realizados 
+                        en esta institución, llevando a cabo un proyecto de gestión y control del mismo. Permitía realizar 
+                        inscripciones de alumnos, manejar profesores, horarios y demás funciones que fueron requeridas por 
+                        la institución.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-12 col-lg-6 skill_div">
+                    <div className="sub_heading">
+                        Lenguajes y Framework
+                    </div>
+                    <div className="resume_card_body">
+                        {skill_language_store.map((skill, i) => <SkillWrapper key={i} name={skill.name} level={skill.level} icon={skill.logo} />)}
+                    </div>
+                </div>
+                <div className="col-12 col-lg-6">
+                    <div className="sub_heading">
+                        Herramientas y Software
+                    </div>
+                    <div className="resume_card_body">
+                        {skill_tool_store.map((skill, i) => <SkillWrapper key={i} name={skill.name} level={skill.level} icon={skill.logo} />)}
                     </div>
                 </div>
             </div>

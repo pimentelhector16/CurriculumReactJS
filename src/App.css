@@ -28,16 +28,11 @@
   background: #ffffff;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   background: #364f6b;
-  background: -webkit-linear-gradient(to right, #364f6b, #232526);
-  background: linear-gradient(to right, #364f6b, #232526);
+  background: -webkit-linear-gradient(to right, #364f6b, #364f6b);
+  background: linear-gradient(to right, #364f6b, #364f6b);
   background-attachment: fixed;
-  height: 100vh;
   color: var(--main-primario);
 }
 
@@ -52,33 +47,32 @@ a:hover {
 }
 
 .container {
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding: 1em;
 }
 
-.app__sidebar {
-  background-color: var(--main-bg);
-  height: 100%;
+.row{
+  margin:0px !important;
+}
+/* sidebar */
+.sideBar_custom {
+  background-color: #fff;
+  text-align: center;
   border-radius: 20px;
   padding: 25px 15px;
   box-shadow: 0 0 10px black;
-  text-align: center;
 }
 
 .app__main-content {
   background-color: var(--main-bg);
-  height: 100%;
   border-radius: 20px;
-  padding: 25px 15px;
   box-shadow: 0 0 10px black;
 }
 
 .sidebar__avatar {
-  background-color: var(--main-primario);
-  height: 150px;
-  width: 150px;
+  height: 125px;
+  width: 125px;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: fill;
 }
 
 .sidebar__title {
@@ -151,41 +145,38 @@ a:hover {
   }
 }
 
-
-
-
-
 /* navbar */
 
-.navbar__items {
+/* navbar */
+.navbar {
   display: flex;
 }
 
-.navbar__active {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--main-primario);
-  border-bottom: 4px solid var(--main-cuaternario);
+.navItems {
+  display: flex;
 }
 
-.navbar__item {
+.nav_heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: #354358;
+  border-bottom: 4px solid var(--main-secundario);
+}
+
+.navItem {
   margin-right: 20px;
   text-decoration: none;
   color: var(--main-primario);
-  font-size: 1.3rem;
-  cursor: pointer;
+  font-size: 20px;
 }
 
-.navbar__item:hover {
-  background: var(--main-cuaternario);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.navItem:hover {
+  text-decoration: none;
+  color: var(--main-secundario);
 }
 
 
 /* CONTENIDO DE LA PAGINA */
-
 .content_section {
   padding: 20px 0;
   border-radius: 20px ;
@@ -235,6 +226,7 @@ a:hover {
 .card_content {
   color: var(--main-primario);
   font-size: 15px;
+  text-align: justify;
 }
 
 .icon_small {
@@ -243,7 +235,7 @@ a:hover {
 }
 
 .icon_large {
-  width: 60px;
+  width: 50px;
   min-height: 50px;
   height: auto;
 }
@@ -251,4 +243,116 @@ a:hover {
 .icon_tiny {
   width: 15px;
   height: 15px;
+}
+
+
+/* resume */
+.resume_section {
+  padding-top: 20px;
+}
+
+.resume_card_body {
+  margin-top: 15px;
+}
+
+.resume_card_title h5 {
+  font-weight: 700;
+}
+
+.resume_card_description {
+  font-size: 13px;
+  padding-top: 20px;
+  text-align: justify;
+}
+
+.skill_div {
+  padding-bottom: 20px;
+}
+
+.skill_wrapper {
+  width: 90%;
+  background-color: #F1F2F3;
+  border-radius: 20px;
+}
+
+.skill_malo {
+  width: 45%;
+}
+
+.skill_medio {
+  width: 65%;
+
+}
+
+.skill_bueno {
+  width: 80%;
+
+}
+
+.skill_excelente {
+  width: 95%;
+}
+
+.skill {
+  background-image: linear-gradient(to right, var(--main-primario), var(--main-cuaternario));
+  border-radius: 20px;
+  color: #fff;
+  padding: 4px 14px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+
+/* project section */
+.proyecto_section {
+  padding-top: 30px;
+  
+}
+
+.proyecto_section_header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.proyecto_header_child {
+  margin-right: 15px;
+}
+
+.proyecto_header_child:hover {
+  cursor: pointer;
+  color: #000;
+}
+
+.proyecto_card {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.proyecto_name {
+  font-size: 17px;
+}
+
+.proyecto_wrapper {
+  height: 100%;
+  width: 100%;
+  min-height: 140px;
+  text-align: center;
+}
+
+.proyecto_image {
+  border-radius: 20px;
+  border: 1px solid var(--main-secundario);
+  width: 80%;
+  height: 150px;
+  object-fit: contain;
+}
+
+.proyecto_image:hover {
+  transform: scale(1.02);
+  transition: 0.2s linear;
+}
+.proyecto_section_header button {
+  margin:5px;
 }

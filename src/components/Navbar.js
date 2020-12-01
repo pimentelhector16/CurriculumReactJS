@@ -1,45 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const Navbar = () => {
 
-  const [active, setActive] = useState('')
+  const [heading, setHeading] = useState('')
 
   useEffect(() => {
-    let currentURL = window.location.href
-    console.log(currentURL);
-    if (currentURL.endsWith('/'))
-      setActive('Acerca');
-    else if (currentURL.endsWith('/proyectos'))
-      setActive('Proyectos')
-    else if (currentURL.endsWith('/resumen'))
-      setActive('Resumen')
+    // heading error on page referesh
+    var header = localStorage.getItem('nav_header')
+    header ? setHeading(header) : setHeading('Acerca')
+  }, [setHeading])
 
-  }, [active])
+  const handleSetHeading = (header) => {
+    localStorage.setItem("nav_header", header)
+    setHeading(header)
+  }
+
+  var navbarVariants = {
+    initial: {
+      y: '-30vh',
+      opacity: 0
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { delay: 0.3, duration: 0.3, type: 'spring' }
+    }
+  }
   return (
-    <div className="navbar">
-      <div className="navbar__active">
-        {active}
+    <motion.div className="navbar"
+      variants={navbarVariants}
+      initial='initial'
+      animate='visible'
+    >
+      <div className="nav_heading">{heading}</div>
+      <div className="navItems">
+        {heading !== 'Acerca' && <Link to='/' ><div className="acerca navItem" onClick={() => handleSetHeading('Acerca')}>Acerca</div></Link>}
+        {heading !== 'Proyectos' && <Link to='/proyectos' > <div className="proyectos navItem" onClick={() => handleSetHeading('Proyectos')}>Proyectos</div></Link>}
+        {heading !== 'Resumen' && <Link to='/resumen'  > <div className="resumen navItem" onClick={() => handleSetHeading('Resumen')}>Resumen</div></Link>}
       </div>
-      <div className="navbar__items">
-        {active !== 'Acerca' &&
-          <Link to="/">
-            <div className="navbar__item" onClick={() => setActive('Acerca')}>Acerca</div>
-          </Link>
-        }
-        {active !== 'Resumen' ?
-          <Link to="/resumen">
-            <div className="navbar__item" onClick={() => setActive('Resumen')}>Resumen</div>
-          </Link> : null
-        }
-
-        {active !== 'Proyectos' &&
-          <Link to="/proyectos">
-            <div className="navbar__item" onClick={() => setActive('Proyectos')}>Proyectos</div>
-          </Link>
-        }
-      </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import ProyectoCard from '../components/ProyectoCard'
+import ProyectosStore from '../components/ProyectosStore'
 
-function Proyectos() {
-
-    const proyectosVariantes = {
+const Proyectos = () => {
+    const [proyectos, setProyectos] = useState(ProyectosStore)
+    const proyectosVariante = {
         initial: {
             opacity: 0
         },
@@ -20,16 +22,30 @@ function Proyectos() {
             }
         }
     }
-
+    const handleFilterCatagory = (name) => {
+        const new_array = ProyectosStore.filter((proyecto, i) => proyecto.catagory.includes(name))
+        setProyectos(new_array)
+    }
     return (
-        <motion.div className='content_section'
-            variants={proyectosVariantes}
+        <motion.div className='container proyectos_section'
+            variants={proyectosVariante}
             initial='initial'
             animate='visible'
             exit='exit'
 
         >
-            <h2>Proyectos</h2>
+            <div className="proyecto_section_header ">
+                <button type="button" class="btn btn-light" onClick={() => setProyectos(ProyectosStore)}>Todos</button>
+                <button type="button" class="btn btn-light" onClick={() => handleFilterCatagory('sitiosweb')}>Sitios Web</button>
+                <button type="button" class="btn btn-light" onClick={() => handleFilterCatagory('sistema')}>Sistemas</button>
+                <button type="button" class="btn btn-light" onClick={() => handleFilterCatagory('aplicaciones_android')}>Android</button>
+                <button type="button" class="btn btn-light" onClick={() => handleFilterCatagory('react')}>React js</button>
+            </div>
+            <div className="row">
+                {proyectos.map((proyecto, i) =>
+                    <ProyectoCard key={i} image={proyecto.image} name={proyecto.name} url={proyecto.url} />
+                )}
+            </div>
         </motion.div>
     )
 }

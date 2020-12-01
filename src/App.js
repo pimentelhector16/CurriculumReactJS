@@ -1,35 +1,35 @@
 import './App.css';
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Acerca from './pages/Acerca'
 import Resumen from './pages/Resumen'
 import Proyectos from './pages/Proyectos'
+import { AnimatePresence } from 'framer-motion'
 
-function App() {
+const App = () => {
   return (
     <Router>
-      <div className="container">
+      <div className="container mb-2">
         <div className="row">
-          <div className="col-lg-3">
+          <div className="col-sm-12 col-lg-3">
             <div className="app__sidebar">
               <Sidebar />
             </div>
           </div>
-          <div className="col-lg-9 app__main-content">
+          <div className="col-sm-12 col-lg-9 app__main-content mainarea_custom">
             <Navbar />
-            <Switch>
-              <Route exact path="/">
-                <Acerca />
-              </Route>
-              <Route path="/resumen" >
-                <Resumen />
-              </Route>
-              <Route path="/proyectos" component={Proyectos} />
-              <Route>
-                <Redirect to="/" />
-              </Route>
-            </Switch>
+            <AnimatePresence exitBeforeEnter>
+              <Switch>
+                <Route path='/resumen'>
+                  <Resumen />
+                </Route>
+                <Route path='/proyectos'>
+                  <Proyectos />
+                </Route>
+                <Route path='/' exact component={Acerca} />
+              </Switch>
+            </AnimatePresence>
           </div>
         </div>
       </div>

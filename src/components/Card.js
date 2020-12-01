@@ -4,7 +4,7 @@ const Card = ({ icon, title, body }) => {
     return (
         <div className="card_custom">
             <div className="card_image">
-                <img src={icon} alt="icon" className="icon_large" />
+                <img src={icon} alt={title} className="icon_large" />
             </div>
             <div className="card_body">
                 <div className="card_title">{title}</div>
@@ -13,7 +13,6 @@ const Card = ({ icon, title, body }) => {
                 </div>
             </div>
         </div>
-
     )
 
 }
